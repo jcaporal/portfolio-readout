@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Portfolio Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f2efeb;
+            color: #1d364e;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .project-section {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .story-section {
+            padding: 2rem 0;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 2.5rem;
+        }
+        .story-section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        .story-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #50b3db;
+        }
+        .story-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1d364e;
+        }
+        .milestone-section, .blocker-section, .action-section, .kpi-section {
+            background-color: #f2efeb;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .milestone-section ul, .blocker-section ul, .action-section ul, .kpi-section ul {
+            padding-left: 0;
+        }
+        .milestone-section li::before {
+            content: "✓";
+            color: #50b3db;
+            font-weight: 700;
+            position: absolute;
+            left: -1rem;
+            
+        }
+        .blocker-section li::before {
+            content: "✕";
+            color: #e83760;
+            font-weight: 700;
+            position: absolute;
+            left: -1rem;
+            
+        }
+        .action-section li::before {
+            content: "●";
+            color: #1d364e;
+            font-weight: 700;
+            position: absolute;
+            left: -1rem;
+        }
+        .kpi-section li::before {
+            content: "●";
+            color: #1d364e;
+            font-weight: 700;
+            position: absolute;
+            left: -1rem;
+        }
+        .milestone-section li, .blocker-section li, .action-section li, .kpi-section li {
+            position: relative;
+            padding-left: 1.5rem;
+            list-style: none;
+            font-family: 'Lora', serif;
+        }
+        .project-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1d364e;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #50b3db;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .home-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        .home-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="p-8">
+
+    <div class="container animate-fade-in">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800" style="color:#1d364e">Project Portfolio Update</h1>
+        </header>
+
+        <div id="home-page" class="animate-fade-in">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="home-card" onclick="showProject('shift')">
+                    <h3 class="text-2xl font-bold" style="color:#1d364e">SHIFT: HRIS & Payroll</h3>
+                    <p class="mt-2 text-gray-600 font-lora">An initiative to transform HR and payroll processes with a new, integrated system.</p>
+                </div>
+                <div class="home-card" onclick="showProject('pride')">
+                    <h3 class="text-2xl font-bold" style="color:#1d364e">Project PRIDE</h3>
+                    <p class="mt-2 text-gray-600 font-lora">A project focused on drafting a newsletter and facilitating workshops for project management skills.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHIFT Project -->
+        <div id="shift-page" class="hidden">
+            <button onclick="showHome()" class="text-gray-600 hover:text-gray-800 mb-6 flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
+            </button>
+            <section class="project-section animate-fade-in">
+                <div class="project-header">
+                    <h2 class="project-title">SHIFT: HRIS & Payroll</h2>
+                </div>
+                
+                <!-- The Situation -->
+                <div class="story-section">
+                    <div class="flex items-center gap-4">
+                        <div class="story-icon">
+                            <svg class="w-10 h-10 text-gray-800 dark:text-white" style="color: #e83760" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="story-title">The Situation: Where We Are Now</h3>
+                    </div>
+                    <div class="mt-4">
+                        <div class="milestone-section">
+                            <ul class="space-y-2">
+                                <li>Workday demos are in hand, and requirements are categorized.</li>
+                            </ul>
+                        </div>
+                        <div class="blocker-section">
+                            <ul class="space-y-2">
+                                <li>Vendor evaluations are still in progress.</li>
+                                <li>The Bamboo HR demo has been rescheduled for next week.</li>
+                                <li>Change management document is still being finalized.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Plan & KPIs -->
+                <div class="story-section">
+                    <div class="flex items-center gap-4">
+                        <div class="story-icon">
+                            <svg class="w-10 h-10 text-gray-800 dark:text-white" style="color: #50b3db" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10 2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="story-title">Our Action Plan: Moving Forward</h3>
+                    </div>
+                    <div class="mt-4">
+                        <div class="action-section">
+                            <ul class="space-y-2">
+                                <li>Assess Workday demos and conduct the BambooHR demo.</li>
+                                <li>Complete the change management document.</li>
+                            </ul>
+                        </div>
+                        <div class="kpi-section" style="background-color: #ffda3c;">
+                            <ul class="space-y-2">
+                                <li><strong>Key deliverables are at risk: No defined targets from an enterprise point of view. Ongoing conversations on tools like AmplifAi and Gnowbe are impacting our focus. A critical business decision on core priorities is needed to move forward.</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PRIDE Project -->
+        <div id="pride-page" class="hidden">
+            <button onclick="showHome()" class="text-gray-600 hover:text-gray-800 mb-6 flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
+            </button>
+            <section class="project-section animate-fade-in">
+                <div class="project-header">
+                    <h2 class="project-title">Project PRIDE</h2>
+                </div>
+                
+                <!-- The Situation -->
+                <div class="story-section">
+                    <div class="flex items-center gap-4">
+                        <div class="story-icon">
+                            <svg class="w-10 h-10 text-gray-800 dark:text-white" style="color: #e83760" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="story-title">The Situation: Where We Are Now</h3>
+                    </div>
+                    <div class="mt-4">
+                        <div class="milestone-section">
+                            <ul class="space-y-2">
+                                <li>The first module's newsletter draft is complete.</li>
+                                <li>Workshop sessions have been scheduled.</li>
+                            </ul>
+                        </div>
+                        <div class="blocker-section">
+                            <ul class="space-y-2">
+                                <li>Pilot workshop scheduling conflicts may still exist.</li>
+                                <li>Gmail branding issues are affecting fonts and icons.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Plan & KPIs -->
+                <div class="story-section">
+                    <div class="flex items-center gap-4">
+                        <div class="story-icon">
+                            <svg class="w-10 h-10 text-gray-800 dark:text-white" style="color: #50b3db" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10 2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="story-title">Our Action Plan: Moving Forward</h3>
+                    </div>
+                    <div class="mt-4">
+                        <div class="action-section">
+                            <ul class="space-y-2">
+                                <li>Finalize workshop schedules to ensure strong participation.</li>
+                                <li>Confirm workshop availability with pilot group.</li>
+                                <li>Proceeding with HTML release. Issues to be addressed in succeeding releases.</li>
+                            </ul>
+                        </div>
+                        <div class="kpi-section" style="background-color: #D4EDDA;">
+                            <ul class="space-y-2">
+                                <li>On track for Friday release, proactively mitigating risks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        function showProject(projectId) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('shift-page').style.display = 'none';
+            document.getElementById('pride-page').style.display = 'none';
+            document.getElementById(projectId + '-page').style.display = 'block';
+        }
+
+        function showHome() {
+            document.getElementById('home-page').style.display = 'block';
+            document.getElementById('shift-page').style.display = 'none';
+            document.getElementById('pride-page').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
